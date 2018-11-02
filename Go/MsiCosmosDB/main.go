@@ -8,10 +8,15 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/Azure/azure-sdk-for-go/services/keyvault/2016-10-01/keyvault"
 	"github.com/Azure/go-autorest/autorest/azure"
 	"github.com/Azure/go-autorest/autorest/azure/auth"
+)
+
+const (
+	getSecretRetires = 10
 )
 
 func main() {
@@ -30,9 +35,24 @@ func main() {
 		log.Fatal(err)
 	}
 
-	dbURI, err := keyClient.GetSecret("dbURI")
-	if err != nil {
-		log.Fatal(err)
+	count := 0
+	var dbURI string
+	for {
+		dbURI, err = keyClient.GetSecret("dbURI")
+		if err != nil {
+			if count > getSecretRetires {
+				log.Fatalf("Failed to get secret within retries with err: %v", err)
+			}
+
+			log.Printf("Retrying GetSecret: %d", count)
+			count++
+
+			time.Sleep(time.Second)
+			continue
+		}
+
+		log.Println("Got DBURI")
+		break
 	}
 
 	db := NewDB(dbURI, "users")
