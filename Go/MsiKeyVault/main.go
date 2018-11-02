@@ -78,39 +78,3 @@ func (k *KeyVault) GetSecret(keyName string) (string, error) {
 
 	return *keyBundle.Value, nil
 }
-
-// type MSIConfig struct {
-// 	Resource string
-// 	ClientID string
-// }
-
-// func NewCustomMSIConfig(clientID string) *MSIConfig {
-// 	return &MSIConfig{
-// 		Resource: strings.TrimSuffix(azure.PublicCloud.KeyVaultEndpoint, "/"),
-// 		ClientID: clientID,
-// 	}
-// }
-
-// func (mc *MSIConfig) Authorizer() (autorest.Authorizer, error) {
-// 	msiEndpoint, err := adal.GetMSIVMEndpoint()
-// 	if err != nil {
-// 		return nil, err
-// 	}
-
-// 	var spToken *adal.ServicePrincipalToken
-// 	if mc.ClientID == "" {
-// 		log.Println("Using System Assined Identity to get token")
-// 		spToken, err = adal.NewServicePrincipalTokenFromMSI(msiEndpoint, mc.Resource)
-// 		if err != nil {
-// 			return nil, fmt.Errorf("failed to get oauth token for system Assigned MSI: %v", err)
-// 		}
-// 	} else {
-// 		log.Println("Using User assigned Idenetity to get token.")
-// 		spToken, err = adal.NewServicePrincipalTokenFromMSIWithUserAssignedID(msiEndpoint, mc.Resource, mc.ClientID)
-// 		if err != nil {
-// 			return nil, fmt.Errorf("failed to get oauth token for user assigned MSI: %v", err)
-// 		}
-// 	}
-
-// 	return autorest.NewBearerAuthorizer(spToken), nil
-// }
