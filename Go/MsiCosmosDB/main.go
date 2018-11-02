@@ -4,9 +4,10 @@ import (
 	"context"
 	"crypto/tls"
 	"fmt"
+	"html/template"
 	"log"
 	"net"
-	"os"
+	"net/http"
 	"strings"
 
 	"gopkg.in/mgo.v2"
@@ -18,28 +19,51 @@ import (
 )
 
 func main() {
-	vaultName, ok := os.LookupEnv("KEYVAULT_VAULT")
-	if !ok {
-		log.Fatal("KEYVAULT_VAULT must be set.")
-	}
+	// vaultName, ok := os.LookupEnv("KEYVAULT_VAULT")
+	// if !ok {
+	// 	log.Fatal("KEYVAULT_VAULT must be set.")
+	// }
 
-	secretName, ok := os.LookupEnv("KEYVAULT_SECRET")
-	if !ok {
-		log.Fatal("KEYVAULT_SECRET must be set.")
-	}
+	// secretName, ok := os.LookupEnv("KEYVAULT_SECRET")
+	// if !ok {
+	// 	log.Fatal("KEYVAULT_SECRET must be set.")
+	// }
 
-	clientID := os.Getenv("MSI_USER_ASSIGNED_CLIENTID")
+	// clientID := os.Getenv("MSI_USER_ASSIGNED_CLIENTID")
 
-	keyClient, err := NewKeyVaultClient(vaultName, clientID)
-	if err != nil {
-		log.Fatal(err)
-	}
+	// keyClient, err := NewKeyVaultClient(vaultName, clientID)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
-	dbURI, err := keyClient.GetSecret(secretName)
-	if err != nil {
-		log.Fatal(err)
-	}
+	// dbURI, err := keyClient.GetSecret(secretName)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
+	// get users
+
+	tmpl := template.Must(template.ParseFiles("index.html"))
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		data := IndexPageData{
+			PageTitle: "All the Users",
+			Users: []User{
+				{Name: "Task 1", Email: "test@gmail.com"},
+				{Name: "Task 2", Email: "test2@gmail.com"},
+				{Name: "Task 3", Email: "test3@gmail.com"},
+			},
+		}
+		tmpl.Execute(w, data)
+	})
+
+	log.Println("Serving on port 8080")
+	log.Fatal(http.ListenAndServe("0.0.0.0:8080", nil))
+}
+
+type IndexPageData struct {
+	PageTitle string
+	Users     []User
 }
 
 type User struct {
