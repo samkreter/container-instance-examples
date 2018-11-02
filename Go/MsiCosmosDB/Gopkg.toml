@@ -1,6 +1,6 @@
 # Gopkg.toml example
 #
-# Refer to https://golang.github.io/dep/docs/Gopkg.toml.html
+# Refer to https://github.com/golang/dep/blob/master/docs/Gopkg.toml.md
 # for detailed Gopkg.toml documentation.
 #
 # required = ["github.com/user/thing/cmd/thing"]
@@ -27,11 +27,19 @@
 
 [[constraint]]
   name = "github.com/Azure/azure-sdk-for-go"
-  version = "21.3.0"
+  version = "22.0.0"
 
 [[constraint]]
   name = "github.com/Azure/go-autorest"
-  version = "11.2.1"
+  version = "11.2.6"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/globalsign/mgo"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/icrowley/fake"
 
 [prune]
   go-tests = true

@@ -1,5 +1,6 @@
 **/env
 **/build.ps1
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

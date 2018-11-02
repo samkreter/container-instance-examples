@@ -13,8 +13,8 @@
     "services/keyvault/2016-10-01/keyvault",
     "version"
   ]
-  revision = "da91af54816b4cf72949c225a2d0980f51fab01b"
-  version = "v21.3.0"
+  revision = "ca4654c50e30248fa542c1f0dd07fbde21d9b9a2"
+  version = "v22.0.0"
 
 [[projects]]
   name = "github.com/Azure/go-autorest"
@@ -31,8 +31,8 @@
     "tracing",
     "version"
   ]
-  revision = "a27e7666341d6b0509d868c713b91dae08971382"
-  version = "v11.2.1"
+  revision = "4e5fffdf007df29ed0862f9e01fafabf4396e851"
+  version = "v11.2.6"
 
 [[projects]]
   name = "github.com/census-instrumentation/opencensus-proto"
@@ -45,6 +45,12 @@
   version = "v0.0.2"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/corpix/uarand"
+  packages = ["."]
+  revision = "2b8494104d86337cdd41d0a49cbed8e4583c0ab4"
+
+[[projects]]
   name = "github.com/dgrijalva/jwt-go"
   packages = ["."]
   revision = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e"
@@ -55,6 +61,18 @@
   packages = ["."]
   revision = "5448fe645cb1964ba70ac8f9f2ffe975e61a536c"
   version = "v1.0.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/globalsign/mgo"
+  packages = [
+    ".",
+    "bson",
+    "internal/json",
+    "internal/sasl",
+    "internal/scram"
+  ]
+  revision = "eeefdecb41b842af6dc652aaea4026e8403e62df"
 
 [[projects]]
   name = "github.com/golang/protobuf"
@@ -70,13 +88,18 @@
   version = "v1.2.0"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/icrowley/fake"
+  packages = ["."]
+  revision = "4178557ae428460c3780a381c824a1f3aceb6325"
+
+[[projects]]
   name = "github.com/mitchellh/go-homedir"
   packages = ["."]
   revision = "ae18d6b8b3205b561c79e8e5f69bff09736185f4"
   version = "v1.0.0"
 
 [[projects]]
-  branch = "master"
   name = "go.opencensus.io"
   packages = [
     ".",
@@ -95,7 +118,8 @@
     "trace/propagation",
     "trace/tracestate"
   ]
-  revision = "486d66aed0ffe5d13ed9f0d59f96fa761cd0abcf"
+  revision = "b7bf3cdb64150a8c8c53b769fdeb2ba581bd4d4b"
+  version = "v0.18.0"
 
 [[projects]]
   branch = "master"
@@ -104,7 +128,7 @@
     "pkcs12",
     "pkcs12/internal/rc2"
   ]
-  revision = "0c41d7ab0a0ee717d4590a44bcb987dfd9e183eb"
+  revision = "4d3f4d9ffa16a13f451c3b2999e9c49e9750bf06"
 
 [[projects]]
   branch = "master"
@@ -118,7 +142,7 @@
     "internal/timeseries",
     "trace"
   ]
-  revision = "04a2e542c03f1d053ab3e4d6e5abcd4b66e2be8e"
+  revision = "e11730110bbd884bbf19550bfafe9d69519ce29e"
 
 [[projects]]
   branch = "master"
@@ -130,7 +154,7 @@
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "8a28ead16f52c8aaeffbf79239b251dfdf6c4f96"
+  revision = "9b800f95dbbc54abff0acf7ee32d88ba4e328c89"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -157,13 +181,13 @@
   branch = "master"
   name = "google.golang.org/api"
   packages = ["support/bundler"]
-  revision = "a2651947f503a1793446d4058bb073a6fdf99e53"
+  revision = "45a606955d1cf544236717b0ba3a7beca40b0b37"
 
 [[projects]]
   branch = "master"
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
-  revision = "94acd270e44e65579b9ee3cdab25034d33fed608"
+  revision = "c830210a61dfaa790e1920f8d0470fc27bc2efbe"
 
 [[projects]]
   name = "google.golang.org/grpc"
@@ -195,12 +219,12 @@
     "status",
     "tap"
   ]
-  revision = "8dea3dc473e90c8179e519d91302d0597c0ca1d1"
-  version = "v1.15.0"
+  revision = "2e463a05d100327ca47ac218281906921038fd95"
+  version = "v1.16.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "9c3f021f412eb8539557127aec16c2d68b060ae1ed83cc2f6c2315b51de9ce66"
+  inputs-digest = "00b731570cdada18428e9849f6f12316197b20517fa61ceb1e9a2952b98e0a05"
   solver-name = "gps-cdcl"
   solver-version = 1
